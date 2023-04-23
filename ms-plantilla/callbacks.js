@@ -14,10 +14,10 @@ const faunadb = require('faunadb'),
     q = faunadb.query;
 
 const client = new faunadb.Client({
-    secret: '¿¿¿ CLAVE SECRETA EN FAUNA PARA ESTA BBDD???',
+    secret: 'fnAFCJWbATAAzMk-2rh_aDHYLE7Ps5rzMmFX4ExB',
 });
 
-const COLLECTION = "¿¿¿ COLECCION ???"
+const COLLECTION = "Automovilismo"
 
 // CALLBACKS DEL MODELO
 
@@ -63,8 +63,6 @@ const CB_MODEL_SELECTS = {
 
 }
 
-
-
 // CALLBACKS ADICIONALES
 
 /**
@@ -93,12 +91,14 @@ const CB_OTHERS = {
         try {
             CORS(res).status(200).json({
                 mensaje: "Microservicio MS Plantilla: acerca de",
-                autor: "¿¿¿ AUTOR ???",
-                email: "¿¿¿ EMAIL ???",
-                fecha: "¿¿¿ FECHA ???"
+                autor: "Ignacio Cervilla Gomáriz",
+                email: "icg00048@red.ujaen.es",
+                fecha: "10/04/2023"
             });
         } catch (error) {
-            CORS(res).status(500).json({ error: error.description })
+            CORS(res)
+                .status(500)
+                .json({ error: error.description })
         }
     },
 
