@@ -11,7 +11,6 @@
 let Plantilla = {};
 
 
-
 // Plantilla de datosDescargados vacíos
 Plantilla.datosDescargadosNulos = {
     mensaje: "Microservicio MS Plantilla: acerca de",
@@ -20,21 +19,64 @@ Plantilla.datosDescargadosNulos = {
     fecha: "24/04/2023"
 }
 
+Plantilla.plantillaTags = {
+    "NOMBRE": "### NOMBRE ###",
+    "TIPO_COMBUSTIBLE": "### TIPO_COMBUSTIBLE ###",
+    "COLOR": "### COLOR ###",
+    "HP": "### HP ###",
+    "VELOCIDAD_MAXIMA": "### VELOCIDAD_MAXIMA ###",
+    "NUMERO": "### NUMERO ###",
+    "FECHADENACIMIENTO": "### FECHADENACIMIENTO ###",
+    "ANIOS_GANADOR":"### ANIOS_GANADOR ###",
+    "COEFICIENTE_AERODINAMICO":"### COEFICIENTO_AERODINAMICO ###",
+    "PATROCINADOR":"### PATROCINADOR ###"
+
+}
+Plantilla.cerear = function ( num ) {
+    return (num<10?"0":"")+num
+}
+
+Plantilla.plantillaTablaPersonas = {}   //Plantilla para los datos de cada persona
+
+
 Plantilla.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-personas">
                     <thead>
-                        <th width="10%">Id</th>
                         <th width="10%">Nombre</th>
-                        <th width="10%">Apellidos</th>
-                        <th width="10%">Posicion</th>
+                        <th width="10%">Tipo_Combustible</th>
+                        <th width="10%">Color</th>
+                        <th width="10%">HP</th>
+                        <th width="20%">Velocidad_Maxima</th>
+                        <th width="10%">Numero</th>
                         <th width="20%">FechaDeNacimiento</th>
-                        <th width="10%">cadaHodwarts</th>
-                        <th width="20%">CopasMundiales</th>
-                         <th width="10%">TipoEscoba</th>
-                   
-
+                        <th width="10%">Anios_Ganador</th>
+                        <th width="10%">Coeficiente_Aerodinámico</th>
+                        <th width="10%">Patrocinador</th>
                     </thead>
                     <tbody>
     `;
+
+    Plantilla.plantillaTablaPersonas.cuerpo = `
+    <tr title="${Plantilla.plantillaTags.NOMBRE}">
+        <td>${Plantilla.plantillaTags.NOMBRE}</td>
+        <td>${Plantilla.plantillaTags.TIPO_COMBUSTIBLE}</td>
+        <td>${Plantilla.plantillaTags.COLOR}</td>
+        <td>${Plantilla.plantillaTags.HP}</td>
+        <td>${Plantilla.plantillaTags.VELOCIDAD_MAXIMA}</td>
+        <td>${Plantilla.plantillaTags.FECHADENACIMIENTO}</td>
+        <td>${Plantilla.plantillaTags.ANIOS_GANADOR}</td>
+        <td>${Plantilla.plantillaTags.COEFICIENTE_AERODINAMICO}</td>
+        <td>${Plantilla.plantillaTags.PATROCINADOR}</td>
+        <td>
+                    <div><a href="javascript:Plantilla.mostrar('${Plantilla.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
+        </td>
+    </tr>
+    `;
+
+
+
+
+
+    
 
 /**
  * Función que descarga la info MS Plantilla al llamar a una de sus rutas
@@ -125,15 +167,29 @@ Plantilla.mostrarMuchasPersonas = function (){
  * Función principal para responder al evento de elegir la opción "Home"
  */
 Plantilla.procesarHome = function () {
-    this.descargarRuta("/plantilla/", this.mostrarHome);
+    this.descargarRuta("/Automovilismo/", this.mostrarHome);
 }
 
 /**
  * Función principal para responder al evento de elegir la opción "Acerca de"
  */
 Plantilla.procesarAcercaDe = function () {
-    this.descargarRuta("/plantilla/acercade", this.mostrarAcercaDe);
+    this.descargarRuta("/Automovilismo/acercade", this.mostrarAcercaDe);
 }
 
+Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
+    return Plantilla.sustituyeTags(this.cuerpo, persona)
+}
 
-
+Plantilla.sustituyeTags = function (plantilla, persona) {
+    return plantilla
+        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.ref['@ref'].nombre)
+        .replace(new RegExp(Plantilla.plantillaTags.TIPO_COMBUSTIBLE, 'g'), persona.data.tipo_combustible)
+        .replace(new RegExp(Plantilla.plantillaTags.COLOR, 'g'), persona.data.color)
+        .replace(new RegExp(Plantilla.plantillaTags.HP, 'g'), persona.data.hp)
+        .replace(new RegExp(Plantilla.plantillaTags.VELOCIDAD_MAXIMA, 'g'), persona.data.velocidad_maxima)
+        .replace(new RegExp(Plantilla.plantillaTags.FECHADENACIMIENTO, 'g'), persona.data.fechaNacimiento.annio + "/" + persona.data.fechaNacimiento.mes + "/" + persona.data.fechaNacimiento.dia)
+        .replace(new RegExp(Plantilla.plantillaTags.ANIOS_GANADOR, 'g'), persona.data.anios_ganador)
+        .replace(new RegExp(Plantilla.plantillaTags.COEFICIENTE_AERODINAMICO, 'g'), persona.data.coeficiente_aerodinamico)
+        .replace(new RegExp(Plantilla.plantillaTags.PATROCINADOR, 'g'), persona.data.patrocinador)
+}
