@@ -8,7 +8,7 @@
 
 const ROUTES = [
     {
-        url: '/plantilla',
+        url: '/Automovilismo',
         proxy: {
             target: "http://localhost:8002",
             changeOrigin: true,
