@@ -88,7 +88,7 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
 
     // Intento conectar con el microservicio Plantilla
     try {
-        const url = Frontend.API_GATEWAY + ruta
+        const url = Frontend.API_GATEWAY + "/Automovilismo/getTodos"
         response = await fetch(url)
 
     } catch (error) {
@@ -152,7 +152,7 @@ Plantilla.mostrarAcercaDe = function (datosDescargados) {
 }
 
 
-Plantilla.mostrarMuchasPersonas = function (){
+Plantilla.imprimeMuchasPersonas = function (){
     let msj = Plantilla.plantillaTablaPersonas.cabecera
 
     if( vector && Array.isArray(vector)){
@@ -195,3 +195,11 @@ Plantilla.sustituyeTags = function (plantilla, persona) {
         .replace(new RegExp(Plantilla.plantillaTags.COEFICIENTE_AERODINAMICO, 'g'), persona.data.coeficiente_aerodinamico)
         .replace(new RegExp(Plantilla.plantillaTags.PATROCINADOR, 'g'), persona.data.patrocinador)
 }
+
+
+
+Plantilla.lista = function () {
+    Plantilla.descargarRuta(Plantilla.imprimeMuchasPersonas);
+}
+
+

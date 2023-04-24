@@ -61,7 +61,9 @@ const CB_MODEL_SELECTS = {
         }
     },
 
-    getParticipantes: async (req, res) => {
+    
+    
+    getTodos: async (req, res) => {
 
         try{
             let personas = await client.query(
@@ -70,12 +72,15 @@ const CB_MODEL_SELECTS = {
                     q.Lambda("X", q.Get(q.Var("X")))
                 )
             )
-            
+
             console.log(personas)
-            CORS(res).status(200).json(personas)
+            CORS(res)
+                .status(200)
+                .json(personas)
 
         } catch(error){
-            CORS(res).status(500).json({ error: error.description })
+            CORS(res)
+                .status(500).json({ error: error.description })
         }
     },
 }

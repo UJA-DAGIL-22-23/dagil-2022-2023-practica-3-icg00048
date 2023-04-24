@@ -13,7 +13,7 @@ const ROUTES = [
             target: "http://localhost:8002",
             changeOrigin: true,
             pathRewrite: {
-                [`^/plantilla`]: '',
+                [`^/Automovilismo`]: '',
             },
         }
     }

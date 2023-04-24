@@ -47,5 +47,17 @@ router.get("/test_db", async (req, res) => {
 });
 
 
+router.get("/getTodos", async (req, res) =>{
+    try{
+
+        await callbacks.getTodos(req, res)
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+});
+
 // Exporto el módulo para poder usarlo en server
 module.exports = router;
