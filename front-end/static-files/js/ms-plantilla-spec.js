@@ -12,6 +12,7 @@ const elementoTitulo = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TIT
 const elementoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
 const TITULO_HOME = "Plantilla Home"
 const TITULO_ACERCA_DE = "Plantilla Acerca de"
+const LISTADO_IMPRIMIR_MUCHAS_PERSONAS = "Listado de personas con todos los datos "
 
 const datosDescargadosPrueba = {
     mensaje: "Mensaje de prueba descargado",
@@ -123,6 +124,22 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
         })
 })
 
+
+
+describe("Plantilla.imprimeMuchasPersonas: ", function () {
+    it("muestra datos nulos cuando le pasamos un valor nulo",
+        function () {
+            Plantilla.imprimeMuchasPersonas([])
+            expect(elementoTitulo.innerHTML).toBe(LISTADO_IMPRIMIR_MUCHAS_PERSONAS)
+
+        })
+    it("muestra datos nulos cuando le pasamos un valor no nulo ",
+        function () {
+            Plantilla.imprimeMuchasPersonas(15)
+            expect(elementoTitulo.innerHTML).toBe(LISTADO_IMPRIMIR_MUCHAS_PERSONAS)
+
+        })
+})
 
 /*
 IMPORTANTE
