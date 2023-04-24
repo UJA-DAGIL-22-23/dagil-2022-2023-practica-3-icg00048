@@ -115,7 +115,7 @@ const CB_OTHERS = {
                 mensaje: "Microservicio MS Plantilla: acerca de",
                 autor: "Ignacio Cervilla Gomáriz",
                 email: "icg00048@red.ujaen.es",
-                fecha: "10/04/2023"
+                fecha: "15/02/2000"
             });
         } catch (error) {
             CORS(res)

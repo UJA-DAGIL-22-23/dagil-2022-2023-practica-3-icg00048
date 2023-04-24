@@ -41,6 +41,7 @@ Plantilla.plantillaTablaPersonas = {}   //Plantilla para los datos de cada perso
 
 Plantilla.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-personas">
                     <thead>
+                        <th width="10%">id</th>
                         <th width="10%">Nombre</th>
                         <th width="10%">Tipo_Combustible</th>
                         <th width="10%">Color</th>
@@ -88,7 +89,7 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
 
     // Intento conectar con el microservicio Plantilla
     try {
-        const url = Frontend.API_GATEWAY + "/Automovilismo/getTodos"
+        const url = Frontend.API_GATEWAY + ruta
         response = await fetch(url)
 
     } catch (error) {
@@ -105,6 +106,29 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
     }
 }
 
+
+Plantilla.recupera = async function (callBackFn,campo) {
+    let response = null
+
+    // Intento conectar con el microservicio personas
+    try {
+        const url = Frontend.API_GATEWAY + "/Automovilismo/getTodos"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todas las persoans que se han descargado
+    let vectorPersonas = null
+    if (response) {
+        vectorPersonas = await response.json()
+        callBackFn(vectorPersonas.data,campo)
+
+    }
+}
 
 /**
  * Función principal para mostrar los datos enviados por la ruta "home" de MS Plantilla
@@ -142,6 +166,7 @@ Plantilla.mostrarAcercaDe = function (datosDescargados) {
     const mensajeAMostrar = `<div>
     <p>${datosDescargados.mensaje}</p>
     <ul>
+        <li><b>Autor/a</b>: ${datosDescargados.mensaje}</li>
         <li><b>Autor/a</b>: ${datosDescargados.autor}</li>
         <li><b>E-mail</b>: ${datosDescargados.email}</li>
         <li><b>Fecha</b>: ${datosDescargados.fecha}</li>
@@ -152,7 +177,7 @@ Plantilla.mostrarAcercaDe = function (datosDescargados) {
 }
 
 
-Plantilla.imprimeMuchasPersonas = function (){
+Plantilla.imprimeMuchasPersonas = function (vector){
     let msj = Plantilla.plantillaTablaPersonas.cabecera
 
     if( vector && Array.isArray(vector)){
@@ -185,21 +210,19 @@ Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
 
 Plantilla.sustituyeTags = function (plantilla, persona) {
     return plantilla
-        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.ref['@ref'].nombre)
+        .replace(new RegExp(Plantilla.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
+        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.nombre)
         .replace(new RegExp(Plantilla.plantillaTags.TIPO_COMBUSTIBLE, 'g'), persona.data.tipo_combustible)
         .replace(new RegExp(Plantilla.plantillaTags.COLOR, 'g'), persona.data.color)
         .replace(new RegExp(Plantilla.plantillaTags.HP, 'g'), persona.data.hp)
         .replace(new RegExp(Plantilla.plantillaTags.VELOCIDAD_MAXIMA, 'g'), persona.data.velocidad_maxima)
-        .replace(new RegExp(Plantilla.plantillaTags.FECHADENACIMIENTO, 'g'), persona.data.fechaNacimiento.annio + "/" + persona.data.fechaNacimiento.mes + "/" + persona.data.fechaNacimiento.dia)
+        .replace(new RegExp(Plantilla.plantillaTags.FECHADENACIMIENTO, 'g'), persona.data.fechaNacimiento.anio + "/" + persona.data.fechaNacimiento.mes + "/" + persona.data.fechaNacimiento.dia)
         .replace(new RegExp(Plantilla.plantillaTags.ANIOS_GANADOR, 'g'), persona.data.anios_ganador)
         .replace(new RegExp(Plantilla.plantillaTags.COEFICIENTE_AERODINAMICO, 'g'), persona.data.coeficiente_aerodinamico)
         .replace(new RegExp(Plantilla.plantillaTags.PATROCINADOR, 'g'), persona.data.patrocinador)
 }
 
 
-
 Plantilla.lista = function () {
-    Plantilla.descargarRuta(Plantilla.imprimeMuchasPersonas);
+    Plantilla.recupera(Plantilla.imprimeMuchasPersonas);
 }
-
-
