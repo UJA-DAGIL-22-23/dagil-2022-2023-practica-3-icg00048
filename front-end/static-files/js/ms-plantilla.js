@@ -55,28 +55,28 @@ Plantilla.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-
                     <tbody>
     `;
 
-    Plantilla.plantillaTablaPersonas.cuerpo = `
-    <tr title="${Plantilla.plantillaTags.NOMBRE}">
-        <td>${Plantilla.plantillaTags.NOMBRE}</td>
-        <td>${Plantilla.plantillaTags.TIPO_COMBUSTIBLE}</td>
-        <td>${Plantilla.plantillaTags.COLOR}</td>
-        <td>${Plantilla.plantillaTags.HP}</td>
-        <td>${Plantilla.plantillaTags.VELOCIDAD_MAXIMA}</td>
-        <td>${Plantilla.plantillaTags.FECHADENACIMIENTO}</td>
-        <td>${Plantilla.plantillaTags.ANIOS_GANADOR}</td>
-        <td>${Plantilla.plantillaTags.COEFICIENTE_AERODINAMICO}</td>
-        <td>${Plantilla.plantillaTags.PATROCINADOR}</td>
-        <td>
-                    <div><a href="javascript:Plantilla.mostrar('${Plantilla.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
-        </td>
-    </tr>
+Plantilla.plantillaTablaPersonas.cuerpo = `
+<tr title="${Plantilla.plantillaTags.NOMBRE}">
+    <td>${Plantilla.plantillaTags.NOMBRE}</td>
+    <td>${Plantilla.plantillaTags.TIPO_COMBUSTIBLE}</td>
+    <td>${Plantilla.plantillaTags.COLOR}</td>
+    <td>${Plantilla.plantillaTags.HP}</td>
+    <td>${Plantilla.plantillaTags.VELOCIDAD_MAXIMA}</td>
+    <td>${Plantilla.plantillaTags.FECHADENACIMIENTO}</td>
+    <td>${Plantilla.plantillaTags.ANIOS_GANADOR}</td>
+    <td>${Plantilla.plantillaTags.COEFICIENTE_AERODINAMICO}</td>
+    <td>${Plantilla.plantillaTags.PATROCINADOR}</td>
+    <td>
+                <div><a href="javascript:Plantilla.mostrar('${Plantilla.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
+    </td>
+</tr>
+`;
+
+Plantilla.plantillaTablaPersonas.pie = `  </tbody>
+    </table>
     `;
 
 
-
-
-
-    
 
 /**
  * Función que descarga la info MS Plantilla al llamar a una de sus rutas
@@ -159,7 +159,9 @@ Plantilla.mostrarMuchasPersonas = function (){
         vector.forEach(e => msj = msj + Plantilla.plantillaTablaPersonas.actualiza(e))
     }
 
+    msj += Plantilla.plantillaTablaPersonas.pie
     Frontend.actualizar("Listado de personas con todos los datos ", ms)
+
 }
 
 
