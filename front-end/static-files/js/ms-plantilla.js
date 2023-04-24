@@ -10,14 +10,31 @@
 /// Creo el espacio de nombres
 let Plantilla = {};
 
+
+
 // Plantilla de datosDescargados vacíos
 Plantilla.datosDescargadosNulos = {
-    mensaje: "Datos Descargados No válidos",
-    autor: "",
-    email: "",
-    fecha: ""
+    mensaje: "Microservicio MS Plantilla: acerca de",
+    autor: "Ignacio Cervilla Gomáriz",
+    email: "icg000@red.ujaen.es",
+    fecha: "24/04/2023"
 }
 
+Plantilla.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-personas">
+                    <thead>
+                        <th width="10%">Id</th>
+                        <th width="10%">Nombre</th>
+                        <th width="10%">Apellidos</th>
+                        <th width="10%">Posicion</th>
+                        <th width="20%">FechaDeNacimiento</th>
+                        <th width="10%">cadaHodwarts</th>
+                        <th width="20%">CopasMundiales</th>
+                         <th width="10%">TipoEscoba</th>
+                   
+
+                    </thead>
+                    <tbody>
+    `;
 
 /**
  * Función que descarga la info MS Plantilla al llamar a una de sus rutas
@@ -90,6 +107,17 @@ Plantilla.mostrarAcercaDe = function (datosDescargados) {
     </div>
     `;
     Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
+}
+
+
+Plantilla.mostrarMuchasPersonas = function (){
+    let msj = Plantilla.plantillaTablaPersonas.cabecera
+
+    if( vector && Array.isArray(vector)){
+        vector.forEach(e => msj = msj + Plantilla.plantillaTablaPersonas.actualiza(e))
+    }
+
+    Frontend.actualizar("Listado de personas con todos los datos ", ms)
 }
 
 
