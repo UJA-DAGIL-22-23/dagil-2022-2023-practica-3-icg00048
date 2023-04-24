@@ -15,7 +15,7 @@ describe('API Gateway: rutas estáticas', () => {
   describe('Rutas estáticas de MS Plantilla', () => {
     it('Devuelve MS Plantilla Home Page', (done) => {
       supertest(app)
-        .get('/plantilla/')
+        .get('/Automovilismo/')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -28,7 +28,7 @@ describe('API Gateway: rutas estáticas', () => {
     });
     it('Devuelve MS Plantilla Acerca De', (done) => {
       supertest(app)
-        .get('/plantilla/acercade')
+        .get('/Automovilismo/acercade')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -44,3 +44,21 @@ describe('API Gateway: rutas estáticas', () => {
 
 
 
+describe('API Gateway: acceso a ', () => {
+  describe('BBDD Personas', () => {
+      it(' > Obtener todas las personas: debe tener un campo data que es un array de 3 objetos', (done) => {
+          supertest(app)
+              .get('/Automovilismo/getTodos')
+              .expect(200)
+              .expect('Content-Type', /json/)
+              .expect(function (res) {
+                  //console.log( "Get Todos Personas", res.body ); // Para comprobar qué contiene exactamente res.body
+                  assert(res.body.data[0].data.hasOwnProperty('Nombre'));
+                  assert(res.body.data[0].data.Nombre === "Rayo McQueen");
+                  assert(res.body.data.length === 10);
+
+              })
+              .end((error) => { error ? done.fail(error) : done() })
+      });
+  });
+});
