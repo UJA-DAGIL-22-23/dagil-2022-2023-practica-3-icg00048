@@ -20,13 +20,14 @@ Plantilla.datosDescargadosNulos = {
 }
 
 Plantilla.plantillaTags = {
+    "ID": "### ID ###",
     "NOMBRE": "### NOMBRE ###",
     "TIPO_COMBUSTIBLE": "### TIPO_COMBUSTIBLE ###",
     "COLOR": "### COLOR ###",
     "HP": "### HP ###",
     "VELOCIDAD_MAXIMA": "### VELOCIDAD_MAXIMA ###",
     "NUMERO": "### NUMERO ###",
-    "FECHADENACIMIENTO": "### FECHADENACIMIENTO ###",
+    "FECHA_NACIMIENTO": "### FECHA_NACIMIENTO ###",
     "ANIOS_GANADOR":"### ANIOS_GANADOR ###",
     "COEFICIENTE_AERODINAMICO":"### COEFICIENTO_AERODINAMICO ###",
     "PATROCINADOR":"### PATROCINADOR ###"
@@ -41,15 +42,14 @@ Plantilla.plantillaTablaPersonas = {}   //Plantilla para los datos de cada perso
 
 Plantilla.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-personas">
                     <thead>
-                        <th width="10%">id</th>
                         <th width="10%">Nombre</th>
                         <th width="10%">Tipo_Combustible</th>
                         <th width="10%">Color</th>
                         <th width="10%">HP</th>
                         <th width="20%">Velocidad_Maxima</th>
-                        <th width="10%">Numero</th>
-                        <th width="20%">FechaDeNacimiento</th>
+                        <th width="20%">Fecha_Nacimiento</th>
                         <th width="10%">Anios_Ganador</th>
+                        <th width="10%">Numero</th>
                         <th width="10%">Coeficiente_Aerodinámico</th>
                         <th width="10%">Patrocinador</th>
                     </thead>
@@ -63,8 +63,9 @@ Plantilla.plantillaTablaPersonas.cuerpo = `
     <td>${Plantilla.plantillaTags.COLOR}</td>
     <td>${Plantilla.plantillaTags.HP}</td>
     <td>${Plantilla.plantillaTags.VELOCIDAD_MAXIMA}</td>
-    <td>${Plantilla.plantillaTags.FECHADENACIMIENTO}</td>
+    <td>${Plantilla.plantillaTags.FECHA_NACIMIENTO}</td>
     <td>${Plantilla.plantillaTags.ANIOS_GANADOR}</td>
+    <td>${Plantilla.plantillaTags.NUMERO}</td>
     <td>${Plantilla.plantillaTags.COEFICIENTE_AERODINAMICO}</td>
     <td>${Plantilla.plantillaTags.PATROCINADOR}</td>
     <td>
@@ -185,7 +186,7 @@ Plantilla.imprimeMuchasPersonas = function (vector){
     }
 
     msj += Plantilla.plantillaTablaPersonas.pie
-    Frontend.actualizar("Listado de personas con todos los datos ", ms)
+    Frontend.Article.actualizar("Listado de personas con todos los datos ", msj)
 
 }
 
@@ -211,15 +212,16 @@ Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
 Plantilla.sustituyeTags = function (plantilla, persona) {
     return plantilla
         .replace(new RegExp(Plantilla.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
-        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.nombre)
-        .replace(new RegExp(Plantilla.plantillaTags.TIPO_COMBUSTIBLE, 'g'), persona.data.tipo_combustible)
-        .replace(new RegExp(Plantilla.plantillaTags.COLOR, 'g'), persona.data.color)
-        .replace(new RegExp(Plantilla.plantillaTags.HP, 'g'), persona.data.hp)
-        .replace(new RegExp(Plantilla.plantillaTags.VELOCIDAD_MAXIMA, 'g'), persona.data.velocidad_maxima)
-        .replace(new RegExp(Plantilla.plantillaTags.FECHADENACIMIENTO, 'g'), persona.data.fechaNacimiento.anio + "/" + persona.data.fechaNacimiento.mes + "/" + persona.data.fechaNacimiento.dia)
-        .replace(new RegExp(Plantilla.plantillaTags.ANIOS_GANADOR, 'g'), persona.data.anios_ganador)
-        .replace(new RegExp(Plantilla.plantillaTags.COEFICIENTE_AERODINAMICO, 'g'), persona.data.coeficiente_aerodinamico)
-        .replace(new RegExp(Plantilla.plantillaTags.PATROCINADOR, 'g'), persona.data.patrocinador)
+        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.Nombre)
+        .replace(new RegExp(Plantilla.plantillaTags.TIPO_COMBUSTIBLE, 'g'), persona.data.Tipo_Combustible)
+        .replace(new RegExp(Plantilla.plantillaTags.COLOR, 'g'), persona.data.Color)
+        .replace(new RegExp(Plantilla.plantillaTags.HP, 'g'), persona.data.HP)
+        .replace(new RegExp(Plantilla.plantillaTags.VELOCIDAD_MAXIMA, 'g'), persona.data.Velocidad_Maxima)
+        .replace(new RegExp(Plantilla.plantillaTags.FECHA_NACIMIENTO, 'g'), persona.data.Fecha_Nacimiento.anio + "/" + persona.data.Fecha_Nacimiento.mes + "/" + persona.data.Fecha_Nacimiento.dia)
+        .replace(new RegExp(Plantilla.plantillaTags.ANIOS_GANADOR, 'g'), persona.data.Anios_Ganador)
+        .replace(new RegExp(Plantilla.plantillaTags.NUMERO, 'g'), persona.data.Numero)
+        .replace(new RegExp(Plantilla.plantillaTags.COEFICIENTE_AERODINAMICO, 'g'), persona.data.Coeficiente_Aerodinámico)
+        .replace(new RegExp(Plantilla.plantillaTags.PATROCINADOR, 'g'), persona.data.Patrocinador)
 }
 
 
