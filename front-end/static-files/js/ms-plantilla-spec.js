@@ -13,6 +13,7 @@ const elementoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_
 const TITULO_HOME = "Plantilla Home"
 const TITULO_ACERCA_DE = "Plantilla Acerca de"
 const LISTADO_IMPRIMIR_MUCHAS_PERSONAS = "Listado de personas con todos los datos "
+const LISTADO_NOMBRES ="Lista con unicamente el nombre de los corredores"
 
 const datosDescargadosPrueba = {
     mensaje: "Mensaje de prueba descargado",
@@ -137,6 +138,21 @@ describe("Plantilla.imprimeMuchasPersonas: ", function () {
         function () {
             Plantilla.imprimeMuchasPersonas(15)
             expect(elementoTitulo.innerHTML).toBe(LISTADO_IMPRIMIR_MUCHAS_PERSONAS)
+
+        })
+})
+
+describe("Plantilla.listadoNombres: ", function (){
+    it("muestra datos nulos cuando le pasamos un valor nulo",
+        function () {
+            Plantilla.listadoNombres([])
+            expect(elementoTitulo.innerHTML).toBe(LISTADO_NOMBRES)
+
+        })
+    it("muestra datos nulos cuando le pasamos un valor no nulo ",
+        function () {
+            Plantilla.listadoNombres(15)
+            expect(elementoTitulo.innerHTML).toBe(LISTADO_NOMBRES)
 
         })
 })

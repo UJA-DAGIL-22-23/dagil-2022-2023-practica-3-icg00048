@@ -190,6 +190,9 @@ Plantilla.imprimeMuchasPersonas = function (vector){
 
 }
 
+Plantilla.listadoNombres = function (vector){
+    
+}
 
 /**
  * Función principal para responder al evento de elegir la opción "Home"
