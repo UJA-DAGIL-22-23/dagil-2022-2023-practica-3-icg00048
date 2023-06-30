@@ -56,6 +56,17 @@ Plantilla.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-
                     <tbody>
     `;
 
+
+Plantilla.plantillaTablaPersonas.cabeceranNombres = `<table width="100%" class="listado-personas">
+                    <thead>
+                    
+                        <th width="100%">Nombre</th>
+
+                    </thead>
+                    <tbody>
+    `;
+
+
 Plantilla.plantillaTablaPersonas.cuerpo = `
 <tr title="${Plantilla.plantillaTags.NOMBRE}">
     <td>${Plantilla.plantillaTags.NOMBRE}</td>
@@ -191,7 +202,7 @@ Plantilla.imprimeMuchasPersonas = function (vector){
 }
 
 Plantilla.listadoNombres = function (vector){
-    
+
 }
 
 /**
