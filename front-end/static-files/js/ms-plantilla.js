@@ -202,7 +202,14 @@ Plantilla.imprimeMuchasPersonas = function (vector){
 }
 
 Plantilla.listadoNombres = function (vector){
+    let msj = Plantilla.plantillaTablaPersonas.cabecera2
 
+    if (vector && Array.isArray(vector)) {
+        vector.forEach(e => msj += Plantilla.plantillaTablaPersonas.actualiza2(e))
+    }
+
+    msj += Plantilla.plantillaTablaPersonas.pie
+    Frontend.Article.actualizar("Listado de personas solo con su nombre", msj)
 }
 
 /**
@@ -238,6 +245,10 @@ Plantilla.sustituyeTags = function (plantilla, persona) {
         .replace(new RegExp(Plantilla.plantillaTags.PATROCINADOR, 'g'), persona.data.Patrocinador)
 }
 
+Plantilla.sustituyeTagsNombres = function (plantilla, persona) {
+    return plantilla
+        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.Nombre)
+}
 
 Plantilla.lista = function () {
     Plantilla.recupera(Plantilla.imprimeMuchasPersonas);
