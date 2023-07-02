@@ -85,6 +85,15 @@ Plantilla.plantillaTablaPersonas.cuerpo = `
 </tr>
 `;
 
+
+Plantilla.plantillaTablaPersonas.cuerpoNombres = `
+<tr title="${Plantilla.plantillaTags.ID}">
+      
+     <td>${Plantilla.plantillaTags.NOMBRE}</td>
+   
+</tr>
+`;
+
 Plantilla.plantillaTablaPersonas.pie = `  </tbody>
     </table>
     `;
@@ -229,6 +238,7 @@ Plantilla.procesarAcercaDe = function () {
 Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
     return Plantilla.sustituyeTags(this.cuerpo, persona)
 }
+
 
 Plantilla.sustituyeTags = function (plantilla, persona) {
     return plantilla
