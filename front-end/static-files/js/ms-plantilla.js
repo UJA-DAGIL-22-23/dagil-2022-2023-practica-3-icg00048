@@ -211,14 +211,14 @@ Plantilla.imprimeMuchasPersonas = function (vector){
 }
 
 Plantilla.listadoNombres = function (vector){
-    let msj = Plantilla.plantillaTablaPersonas.cabecera2
+    let msj = Plantilla.plantillaTablaPersonas.cabeceranNombres
 
     if (vector && Array.isArray(vector)) {
-        vector.forEach(e => msj += Plantilla.plantillaTablaPersonas.actualiza2(e))
+        vector.forEach(e => msj = msj + Plantilla.plantillaTablaPersonas.actualizaNombres(e))
     }
 
     msj += Plantilla.plantillaTablaPersonas.pie
-    Frontend.Article.actualizar("Listado de personas solo con su nombre", msj)
+    Frontend.Article.actualizar("Lista con unicamente el nombre de los corredores", msj)
 }
 
 /**
@@ -239,6 +239,9 @@ Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
     return Plantilla.sustituyeTags(this.cuerpo, persona)
 }
 
+Plantilla.plantillaTablaPersonas.actualizaNombres = function (persona) {
+    return Plantilla.sustituyeTagsNombres(this.cuerpoNombres, persona)
+}
 
 Plantilla.sustituyeTags = function (plantilla, persona) {
     return plantilla
@@ -262,4 +265,8 @@ Plantilla.sustituyeTagsNombres = function (plantilla, persona) {
 
 Plantilla.lista = function () {
     Plantilla.recupera(Plantilla.imprimeMuchasPersonas);
+}
+
+Plantilla.listaNombres = function () {
+    Plantilla.recupera(Plantilla.listadoNombres);
 }

@@ -157,18 +157,4 @@ describe("Plantilla.listadoNombres: ", function (){
         })
 })
 
-/*
-IMPORTANTE
-==========
 
-Las pruebas TDD que se encargan de probar las conexiones con el microservicio desde el cliente son difíciles de probar 
-dado que requieren solucionar temas de sincronización. 
-Esto afecta a los métodos:
- - Plantilla.descargarRuta
- - Plantilla.procesarAcercaDe
- - Plantilla.procesarHome
-
- Las soluciones propuestas en distintos sitios web no han producido el resultado esperado, 
- por tanto: para esta práctica, se pueden dejar SIN HACER.
-
- */
