@@ -437,3 +437,60 @@ https://github.com/UJA-Desarrollo-Agil/descripcion-proyecto-microservicios-perso
 El código en ese repositorio muestra una aplicación similar, pero con mucha más funcionalidad que esta plantilla: acceso a base de datos remota, listado de documentos recuperados de la BBDD, peticiones entre distintos microservicios, etc.
 
 Además, incluye documentación sobre dicho código y un vídeo descriptivo de cómo se ha realizado y cómo funciona la aplicación de ejemplo.
+
+
+
+# Resolución de la práctica
+
+Tablero Trello: https://trello.com/b/DxMlP7jS/practice3
+
+## Capturas de Fauna preconexion (Justo después de crear la base de datos):
+<img src='/Fauna/Fauna_preconexion1.png' width='700px'/>  
+
+<img src='/Fauna/Fauna_preconexion2.png' width='700px'/>  
+
+<img src='/Fauna/Fauna_preconexion3.png' width='700px'/>
+
+## Capturas de Fauna postconexion:
+
+<img src='/Fauna/Fauna1.png' width='700px'/>  
+
+<img src='/Fauna/Fauna2.png' width='700px'/>  
+
+<img src='/Fauna/Fauna3.png' width='700px'/>
+
+
+
+## Incremento 1 (HU 01,02)
+
+
+
+El orden que he seguido para hacer esta iteración ha sido el siguiente: 01 -> 04 -> 03 -> 02 -> 05 -> 06 
+
+#### Al principio de mi iteración mi tablero Trello se veía así: 
+<img src='/Trello/Trello1.png' width='700px'/>  
+
+
+
+#### Tras implementar correctamente el HU 1, quedaba tal que así:
+<img src='/Trello/Trello2.png' width='700px'/>  
+
+
+#### Y al final de la iteración mi tablero Trello ha quedado de la siguiente manera:
+<img src='/Trello/Trello3.png' width='700px'/>  
+
+
+Intenté implementar más funcionalidades pero cuando me encontraba implementando la primera, me quedé bloqueado con un error que se daba a la hora de conectar mi base datos con mi programa. Al parecer, había tenido un error de sintaxis que no era capaz de encontrar dada la alta dificultad para debugear. Por está razón y mi mala organización, unicamente pude implementar correctamente la primera y cuarta funcionalidad.
+
+
+## Caputaras Implementaciones:
+
+### HU 01
+
+<img src='/CapturasImplementaciones/HU1.png' width='700px'/>  
+
+
+### HU 04
+
+<img src='/CapturasImplementaciones/HU4.png' width='700px'/>  
+
