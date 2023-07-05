@@ -13,6 +13,7 @@ const elementoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_
 const TITULO_HOME = "Plantilla Home"
 const TITULO_ACERCA_DE = "Plantilla Acerca de"
 const LISTADO_IMPRIMIR_MUCHAS_PERSONAS = "Listado de personas con todos los datos "
+const LISTADO_NOMBRES ="Lista con unicamente el nombre de los corredores"
 
 const datosDescargadosPrueba = {
     mensaje: "Mensaje de prueba descargado",
@@ -141,18 +142,19 @@ describe("Plantilla.imprimeMuchasPersonas: ", function () {
         })
 })
 
-/*
-IMPORTANTE
-==========
+describe("Plantilla.listadoNombres: ", function (){
+    it("muestra datos nulos cuando le pasamos un valor nulo",
+        function () {
+            Plantilla.listadoNombres([])
+            expect(elementoTitulo.innerHTML).toBe(LISTADO_NOMBRES)
 
-Las pruebas TDD que se encargan de probar las conexiones con el microservicio desde el cliente son difíciles de probar 
-dado que requieren solucionar temas de sincronización. 
-Esto afecta a los métodos:
- - Plantilla.descargarRuta
- - Plantilla.procesarAcercaDe
- - Plantilla.procesarHome
+        })
+    it("muestra datos nulos cuando le pasamos un valor no nulo ",
+        function () {
+            Plantilla.listadoNombres(15)
+            expect(elementoTitulo.innerHTML).toBe(LISTADO_NOMBRES)
 
- Las soluciones propuestas en distintos sitios web no han producido el resultado esperado, 
- por tanto: para esta práctica, se pueden dejar SIN HACER.
+        })
+})
 
- */
+

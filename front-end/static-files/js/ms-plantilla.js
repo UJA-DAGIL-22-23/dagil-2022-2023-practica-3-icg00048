@@ -56,6 +56,17 @@ Plantilla.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-
                     <tbody>
     `;
 
+
+Plantilla.plantillaTablaPersonas.cabeceranNombres = `<table width="100%" class="listado-personas">
+                    <thead>
+                    
+                        <th width="100%">Nombre</th>
+
+                    </thead>
+                    <tbody>
+    `;
+
+
 Plantilla.plantillaTablaPersonas.cuerpo = `
 <tr title="${Plantilla.plantillaTags.NOMBRE}">
     <td>${Plantilla.plantillaTags.NOMBRE}</td>
@@ -71,6 +82,15 @@ Plantilla.plantillaTablaPersonas.cuerpo = `
     <td>
                 <div><a href="javascript:Plantilla.mostrar('${Plantilla.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
     </td>
+</tr>
+`;
+
+
+Plantilla.plantillaTablaPersonas.cuerpoNombres = `
+<tr title="${Plantilla.plantillaTags.ID}">
+      
+     <td>${Plantilla.plantillaTags.NOMBRE}</td>
+   
 </tr>
 `;
 
@@ -190,6 +210,16 @@ Plantilla.imprimeMuchasPersonas = function (vector){
 
 }
 
+Plantilla.listadoNombres = function (vector){
+    let msj = Plantilla.plantillaTablaPersonas.cabeceranNombres
+
+    if (vector && Array.isArray(vector)) {
+        vector.forEach(e => msj = msj + Plantilla.plantillaTablaPersonas.actualizaNombres(e))
+    }
+
+    msj += Plantilla.plantillaTablaPersonas.pie
+    Frontend.Article.actualizar("Lista con unicamente el nombre de los corredores", msj)
+}
 
 /**
  * Función principal para responder al evento de elegir la opción "Home"
@@ -209,6 +239,10 @@ Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
     return Plantilla.sustituyeTags(this.cuerpo, persona)
 }
 
+Plantilla.plantillaTablaPersonas.actualizaNombres = function (persona) {
+    return Plantilla.sustituyeTagsNombres(this.cuerpoNombres, persona)
+}
+
 Plantilla.sustituyeTags = function (plantilla, persona) {
     return plantilla
         .replace(new RegExp(Plantilla.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
@@ -224,7 +258,15 @@ Plantilla.sustituyeTags = function (plantilla, persona) {
         .replace(new RegExp(Plantilla.plantillaTags.PATROCINADOR, 'g'), persona.data.Patrocinador)
 }
 
+Plantilla.sustituyeTagsNombres = function (plantilla, persona) {
+    return plantilla
+        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.Nombre)
+}
 
 Plantilla.lista = function () {
     Plantilla.recupera(Plantilla.imprimeMuchasPersonas);
+}
+
+Plantilla.listaNombres = function () {
+    Plantilla.recupera(Plantilla.listadoNombres);
 }
