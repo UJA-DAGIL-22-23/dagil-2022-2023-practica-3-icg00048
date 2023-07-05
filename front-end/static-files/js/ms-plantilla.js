@@ -221,6 +221,11 @@ Plantilla.listadoNombres = function (vector){
     Frontend.Article.actualizar("Lista con unicamente el nombre de los corredores", msj)
 }
 
+
+Plantilla.listadoNombresOrdenados = function (vector){
+    
+}
+
 /**
  * Función principal para responder al evento de elegir la opción "Home"
  */
