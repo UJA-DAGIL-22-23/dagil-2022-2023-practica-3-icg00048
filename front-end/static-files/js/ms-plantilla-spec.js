@@ -14,7 +14,7 @@ const TITULO_HOME = "Plantilla Home"
 const TITULO_ACERCA_DE = "Plantilla Acerca de"
 const LISTADO_IMPRIMIR_MUCHAS_PERSONAS = "Listado de personas con todos los datos "
 const LISTADO_NOMBRES ="Lista con unicamente el nombre de los corredores"
-const LISTADO_NOMBRES_ORDENADOS ="Lista con unicamente el nombre de los corredores ordenados alfabeticamente"
+const LISTADO_NOMBRES_ORDENADOS ="Lista con únicamente el nombre de los corredores ordenados"
 
 const datosDescargadosPrueba = {
     mensaje: "Mensaje de prueba descargado",
@@ -180,7 +180,7 @@ describe("Plantilla.listadoNombresOrdenados: ", function (){
             var listaOrdenada = listaNombres.slice().sort();
         
             expect(listaNombres).toEqual(listaOrdenada);
-            
+
         });
 })
 

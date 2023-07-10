@@ -222,9 +222,40 @@ Plantilla.listadoNombres = function (vector){
 }
 
 
-Plantilla.listadoNombresOrdenados = function (vector){
-    
-}
+
+Plantilla.listadoNombresOrdenados = function (vector) {
+    let msj = Plantilla.plantillaTablaPersonas.cabeceranNombres;
+    let listaNombres = [];
+  
+    if (vector && Array.isArray(vector)) {
+      listaNombres = vector.slice();
+      listaNombres.sort(function (a, b) {
+        let campoA = a.data.Nombre.toUpperCase();
+        let campoB = b.data.Nombre.toUpperCase();
+  
+        if (campoA < campoB) {
+          return -1;
+        }
+        if (campoA > campoB) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+  
+    listaNombres.forEach((e) => {
+      msj += Plantilla.plantillaTablaPersonas.actualizaNombres(e);
+    });
+  
+    msj += Plantilla.plantillaTablaPersonas.pie;
+    Frontend.Article.actualizar(
+      "Lista con únicamente el nombre de los corredores ordenados",
+      msj
+    );
+  
+    return listaNombres;
+  };
+  
 
 /**
  * Función principal para responder al evento de elegir la opción "Home"
@@ -274,4 +305,8 @@ Plantilla.lista = function () {
 
 Plantilla.listaNombres = function () {
     Plantilla.recupera(Plantilla.listadoNombres);
+}
+
+Plantilla.listaNombresOrdenados = function () {
+    Plantilla.recupera(Plantilla.listadoNombresOrdenados);
 }
