@@ -35,7 +35,25 @@
 
         <a href="javascript:Plantilla.listaNombresOrdenados()" class="opcion-principal mostrar"
             title="Realiza un listado de los nombres de los corredores que hay en la BBDD ordenados alfabéticamente">Listado nombres corredores ordenados </a>
+        
+        <div class="dropdown">
+            <button class="opcion-principal">Listar ordenado por... </button>
+            <div class="dropdown-content">
+                <a href="javascript:Plantilla.listaOrdenado('Nombre')" class="opcion-principal"
+                    title="Realizar un listado ordenado por el nombre ">Nombre </a>
+                <a href="javascript:Plantilla.listaOrdenado('HP')" class="opcion-principal"
+                    title="Realizar un listado ordenado por el número de caballos ">Caballos </a>
+                <a href="javascript:Plantilla.listaOrdenado('Velocidad_Maxima')" class="opcion-principal"
+                    title="Realizar un listado ordenado por la velocidad máxima ">Velocidad Máxima </a>
+                <a href="javascript:Plantilla.listaOrdenado('Fecha_Nacimiento')" class="opcion-principal"
+                    title="Realizar un listado ordenado por la fecha de nacimiento">Fecha de nacimiento </a>
+                <a href="javascript:Plantilla.listaOrdenado('Anios_ganador')" class="opcion-principal"
+                    title="Realizar un listado ordenado por los anios ganados ">Anios ganador </a>
+                <a href="javascript:Plantilla.listaOrdenado('Coeficiente_Aerodinámico')" class="opcion-principal"
+                    title="Realizar un listado ordenado por el coeficiente aerodinámico">Coeficiente aerodinámico </a>
+            </div>
 
+        </div>
     </nav>
 
     <!-- 

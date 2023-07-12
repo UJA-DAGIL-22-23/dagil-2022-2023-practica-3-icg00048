@@ -184,3 +184,21 @@ describe("Plantilla.listadoNombresOrdenados: ", function (){
 })
 
 
+describe("Plantilla.listadoOrdenado: ", function (){
+    it("muestra datos nulos cuando le pasamos un valor nulo",
+        function () {
+            Plantilla.listadoOrdenado([])
+            expect(elementoTitulo.innerHTML).toBe(LISTADO_ORDENADO)
+
+        })
+    it("muestra datos nulos cuando le pasamos un valor no nulo ",
+        function () {
+            Plantilla.listadoOrdenado(15)
+            expect(elementoTitulo.innerHTML).toBe(LISTADO_ORDENADO)
+
+        })
+})
+
+
+
+

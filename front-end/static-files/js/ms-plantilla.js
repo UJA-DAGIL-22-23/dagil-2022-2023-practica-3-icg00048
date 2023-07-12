@@ -249,6 +249,9 @@ Plantilla.listadoNombresOrdenados = function (vector) {
     return listaNombres;
 }
   
+Plantilla.listadoOrdenado = function (vector, campo) {
+
+}
 
 /**
  * Función principal para responder al evento de elegir la opción "Home"
@@ -302,4 +305,8 @@ Plantilla.listaNombres = function () {
 
 Plantilla.listaNombresOrdenados = function () {
     Plantilla.recupera(Plantilla.listadoNombresOrdenados);
+}
+
+Plantilla.listaOrdenado = function (campo) {
+    Plantilla.recupera(Plantilla.listadoOrdenado, campo);
 }
