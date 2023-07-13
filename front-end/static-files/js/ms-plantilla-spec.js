@@ -15,6 +15,7 @@ const TITULO_ACERCA_DE = "Plantilla Acerca de"
 const LISTADO_IMPRIMIR_MUCHAS_PERSONAS = "Listado de personas con todos los datos "
 const LISTADO_NOMBRES ="Lista con unicamente el nombre de los corredores"
 const LISTADO_NOMBRES_ORDENADOS ="Lista con únicamente el nombre de los corredores ordenados"
+const LISTADO_ORDENADO = "Listado de personas ordenadas alfabeticamente con todos sus datos"
 
 const datosDescargadosPrueba = {
     mensaje: "Mensaje de prueba descargado",
