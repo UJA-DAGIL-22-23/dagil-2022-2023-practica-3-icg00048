@@ -249,9 +249,39 @@ Plantilla.listadoNombresOrdenados = function (vector) {
     return listaNombres;
 }
   
-Plantilla.listadoOrdenado = function (vector, campo) {
-
+Plantilla.listadoOrdenado = function(vector, campo) {
+    let msj = Plantilla.plantillaTablaPersonas.cabecera;
+    
+    if (vector && Array.isArray(vector)) {
+        
+        vector.sort(function(a, b) {
+        let campoA = null;
+        let campoB = null;
+        
+        if (campo == 'Fecha_Nacimiento') {
+          campoA = `${a.data[campo].anio}${Plantilla.cerear(a.data[campo].mes.toString().padStart(2, '0'))}${Plantilla.cerear(a.data[campo].dia.toString().padStart(2, '0'))}`;
+          campoB = `${b.data[campo].anio}${Plantilla.cerear(b.data[campo].mes.toString().padStart(2, '0'))}${Plantilla.cerear(b.data[campo].dia.toString().padStart(2, '0'))}`;
+        } else {
+          campoA = a.data[campo].toUpperCase();
+          campoB = b.data[campo].toUpperCase();
+        }
+        
+        if (campoA < campoB) {
+          return -1;
+        }
+        if (campoA > campoB) {
+          return 1;
+        }
+        return 0;
+      });
+      
+      vector.forEach(e => msj += Plantilla.plantillaTablaPersonas.actualiza(e));
+    }
+    
+    msj += Plantilla.plantillaTablaPersonas.pie;
+    Frontend.Article.actualizar("Listado de personas ordenadas alfabeticamente con todos sus datos", msj);
 }
+  
 
 /**
  * Función principal para responder al evento de elegir la opción "Home"
